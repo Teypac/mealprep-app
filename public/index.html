@@ -65,12 +65,11 @@
     <div class="section-title">What do you like to eat?</div>
     <textarea name="foodLikes" placeholder="List proteins, sides, favorite meals, etc." rows="4"></textarea>
 
-    <div class="section-title">Delivery or Pickup?</div>
-    <select name="deliveryOption" required>
-      <option value="">Select one</option>
-      <option value="Delivery">Delivery</option>
-      <option value="Pickup">Pickup</option>
-    </select>
+    <div class="section-title">Location</div>
+    <input name="city" placeholder="City (ex: Pittsburgh, Atlanta, Los Angeles)" required />
+    <input name="area" placeholder="Part of town / neighborhood (ex: East Liberty, Buckhead, Inglewood)" />
+    <input name="state" placeholder="State (ex: PA, GA, CA)" required />
+
 
     <div class="section-title">Preferred Day & Time</div>
     <input name="preferredDay" placeholder="Preferred day (ex: Sunday)" />
@@ -89,16 +88,19 @@
       e.preventDefault();
 
       const data = {
-        name: form.name.value,
-        phone: form.phone.value,
-        email: form.email.value,
-        mealsPerWeek: form.mealsPerWeek.value,
-        foodLikes: form.foodLikes.value,
-        deliveryOption: form.deliveryOption.value,
-        preferredDay: form.preferredDay.value,
-        preferredTime: form.preferredTime.value,
-        notes: form.notes.value
-      };
+  name: form.name.value,
+  phone: form.phone.value,
+  email: form.email.value,
+  mealsPerWeek: form.mealsPerWeek.value,
+  foodLikes: form.foodLikes.value,
+  city: form.city.value,
+  area: form.area.value,
+  state: form.state.value,
+  preferredDay: form.preferredDay.value,
+  preferredTime: form.preferredTime.value,
+  notes: form.notes.value
+};
+
 
       await fetch("/mealprep-intake", {
         method: "POST",

@@ -25,8 +25,28 @@ app.post("/mealprep-intake", async (req, res) => {
     from: "iteyonb@gmail.com",
     to: "iteyonb@gmail.com",
     subject: "New Meal Prep Submission",
-    text: JSON.stringify(data, null, 2)
-  };
+    text: `
+New Meal Prep Intake Submission
+
+Name: ${data.name}
+Phone: ${data.phone}
+Email: ${data.email}
+
+Meals Per Week: ${data.mealsPerWeek}
+Food Likes: ${data.foodLikes}
+
+Location:
+- City: ${data.city}
+- Area / Neighborhood: ${data.area}
+- State: ${data.state}
+
+Preferred Day: ${data.preferredDay}
+Preferred Time: ${data.preferredTime}
+
+Notes / Dietary Needs:
+${data.notes}
+`
+};
 
   try {
     await transporter.sendMail(mailOptions);
